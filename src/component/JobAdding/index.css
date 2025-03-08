@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.job-adding-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    padding: 25px;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #f8f8f8;
+  }
+
+  .job-image-section {
+    width: 30%;
+    height: 90vh;
+    background-image: url('https://i.postimg.cc/YC8dqGcR/4c35cf90-2b4c-4fbd-ba4e-33ac4a84471b.jpg');
+    text-align: center;
+    background-size: 120% 120%;
+    background-position: bottom left;
+    color: white;
+    padding: 30px;
+    border-radius: 12px 0 0 12px;
+    box-shadow: -3px 0 30px #00000080;
+  }
+  .job-form-section {
+    width: 55%;
+    height: 90vh;
+    padding: 30px;
+    background-color: white;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 3px 0 30px rgba(0, 0, 0, 0.6);
+    overflow: auto;
+  }
+  
+  .job-form-section::-webkit-scrollbar{
+    width: 7px;
+    height: 7px;
+  }
+  .job-form-section::-webkit-scrollbar-track{
+    background-color: transparent;
+    margin: 7px;
+  }
+  .job-form-section::-webkit-scrollbar-thumb{
+    background-color: #11cbff;
+    border-radius: 10px;
+    border: #e3afaf 1px solid;
+  }
+  
+  .form-title {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .input-container {
+    margin-bottom: 25px;
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #444;
+    font-size: 16px;
+  }
+  
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+  }
+  
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  .form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+  }
+  
+  .form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  .cancel-btn {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .add-job-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-job-btn:hover {
+    background-color: #0056b3;
+  }
+  
