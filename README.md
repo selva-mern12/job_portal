@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Job Portal UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend for the **Job Portal** application, built using **React.js**. It provides an intuitive UI for job seekers and recruiters to interact with job listings.
 
-## Available Scripts
+## 🔗 Live Demo
 
-In the project directory, you can run:
+[Job Portal Live](https://job-portal-eta-five.vercel.app/)
 
-### `npm start`
+## 📂 Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+job_portal_ui/
+│-- public/
+│-- src/
+│   ├── component/
+│   │   ├── ApplyJobs/
+│   │   │   ├── index.js
+│   │   │   ├── index.css
+│   │   ├── Header/
+│   │   │   ├── index.js
+│   │   │   ├── index.css
+│   │   ├── JobAdding/
+│   │   │   ├── index.js
+│   │   │   ├── index.css
+│   │   ├── JobDetails/
+│   │   │   ├── index.js
+│   │   │   ├── index.css
+│   │   ├── JobPortal/
+│   │   │   ├── index.js
+│   │   │   ├── index.css
+│   │   ├── JobPortalAuth/
+│   │   │   ├── index.js
+│   │   │   ├── index.css
+│   │   ├── LoadingFailure/
+│   │   │   ├── index.js
+│   │   │   ├── index.css
+│   │   ├── TermsAndPrivacy/
+│   │   │   ├── index.js
+│   │   │   ├── index.css
+│   ├── App.js
+│   ├── App.css
+│   ├── index.js
+│   ├── index.css
+│   ├── logo.svg
+│   ├── .gitignore
+│   ├── package-lock.json
+│   ├── package.json
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📌 Features
+- Job Listings with details
+- Apply for jobs directly
+- Authentication for users
+- Responsive UI
 
-### `npm test`
+## 🚀 Setup Instructions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/selva-mern12/job_portal.git
+   ```
 
-### `npm run build`
+2. Navigate to the project directory:
+   ```sh
+   cd job_portal_ui
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Start the development server:
+   ```sh
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🖥️ Backend Server
+- The backend API for this project is available here: [Job Portal Server](https://github.com/selva-mern12/job-portal-server)
 
-### `npm run eject`
+## 🤝 Contributing
+Feel free to fork this project and submit a pull request if you'd like to improve it!
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
+💡 **Developed by Selva**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
