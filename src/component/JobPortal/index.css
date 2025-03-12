@@ -1,36 +1,71 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .job-listing-container {
   font-family: 'Poppins', Arial, sans-serif; 
-  max-width: 1000px;
-  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: auto;
 }
-
+.job-listing-container::-webkit-scrollbar {
+  display: none;
+}
 .job-header {
-  background: #ff6b6b;
+  height: 10vh;
+  width: 100vw;
+  top: 0;
+  background-color: #ff0000;
+  background-position: center 150px;
+  background-size: 150%;
   color: white;
   border-radius: 0 0 50px 50px;
-  padding: 30px 20px;
+  padding: 30px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  z-index: 10;
 }
-
+.app-name {
+  cursor: pointer;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+.app-name:hover {
+  scale: 1.05;
+  text-decoration: underline;
+}
 .auth-buttons button {
   margin-left: 10px;
-  padding: 5px 12px;
-  border: none;
+  padding: 8px 16px;
+  border: #fff 1px solid;
   cursor: pointer;
-  font-family: 'Poppins', Arial, sans-serif; 
-  transition: background-color 0.3s ease, color 0.3s ease; 
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 15px;
+  background-color: #e06d6d;
+  color: white;
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
 }
-
-.login-btn, .register-btn {
+.auth-buttons button:hover {
+  background-color: #ff0000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.auth-buttons button:active {
+  background-color: #be247c;
+  transform: scale(0.98);
+}
+.login-btn {
   background: white;
   border: transparent 1px groove;
   color: #ff6b6b;
   border-radius: 5px;
   transition: all 0.3s;
 }
-
 .logout-btn, .dashboard-btn {
   background: white;
   border: transparent 1px groove;
@@ -38,26 +73,19 @@
   color: #ff6b6b;
   transition: all 0.3s;
 }
-
-/* Button Hover Effects */
-.auth-buttons button:hover {
-  background-color: #ff6b6b;
-  border: #ddd 1px groove;
-  border-radius: 10px;
-  color: white; 
-}
-
 .filter-container {
+  max-width: 925px;
+  margin: auto;
+  margin-top: 12vh;
   background: #fff4f4;
   padding: 20px;
   border-radius: 10px;
-  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 0 10px;
   align-items: center;
+  box-shadow: #4d0505 1px 1px 5px;
 }
-
 .filter-container input, .filter-container select {
   padding: 8px;
   border: 1px solid #ddd;
@@ -65,78 +93,251 @@
   outline: none;
   font-family: 'Poppins', Arial, sans-serif; 
 }
-
 .skills-filter {
   display: flex;
   align-items: center;
 }
-
 .skill-tag {
-  background: #ff6b6b;
-  color: white;
+  background: #f3a5f7;
+  color: #4d0505;
   padding: 5px 10px;
   border-radius: 5px;
   margin-left: 5px;
-  font-family: 'Poppins', Arial, sans-serif; 
+  font-family: 'Poppins', Arial, sans-serif;
+  display: flex;
+  align-items: center;
 }
-
-.filter-btn, .clear-btn, .add-btn {
+.skill-remove {
+  background-color: #ff6b6b;
+  color: #fff;
+  border: none;
+  padding: 5px;
+  font-size: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.filter-button-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+.clear-btn {
   background: #ff6b6b;
   color: white;
   border: none;
+  margin: 10px;
   padding: 8px 12px;
+  border-radius: 7px;
   cursor: pointer;
-  font-family: 'Poppins', Arial, sans-serif; 
-  transition: background-color 0.3s ease;
-}
-
-/* Button Hover Effects */
-.filter-btn:hover, .clear-btn:hover, .add-job-btn:hover {
-  background-color: #ff4d4d; 
-}
-
-.job-list {
-  margin-top: 20px;
-}
-
-.job-card {
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 15px;
   font-family: 'Poppins', Arial, sans-serif;
+  transition: all 0.3s ease;
 }
-
+.clear-btn:hover {
+  background-color: #ff4d4d;
+  scale: 1.05;
+}
+.job-list {
+  width: 1000px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.job-card {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  border: 1px solid #ddd;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+.cmpy-logo-lg {
+  border-radius: 5px;
+  align-self: flex-start;
+  width: 30px;
+  background-color: #fff;
+}
+.cmpy-logo-sm{
+  display: none;
+}
+.user-rupee-locate-container {
+  display: flex;
+  align-items: center;
+  color: #4c0255;
+  margin: 10px 0;
+  font-size: 15px;
+  gap: 20px;
+}
+.type-remote {
+  display: flex;
+  gap: 20px;
+  color: #4d0505;
+  font-size: 15px;
+}
 .job-tags {
-  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
 }
-
 .job-skill {
-  background: #ff6b6b;
-  color: white;
+  background: rgba(255, 107, 107, 0.2);
+  color: black;
   padding: 5px 8px;
   border-radius: 5px;
-  margin-right: 5px;
-  font-family: 'Poppins', Arial, sans-serif; 
+  font-size: 12px;
+  margin: 5px;
 }
-
-.job-actions {
-  margin-top: 10px;
+.pagination-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  margin-top: auto;
 }
-
-.edit-btn, .details-btn {
-  background: #ff6b6b;
-  color: white;
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgb(229, 201, 230);
+  padding: 10px 15px;
+  border-radius: 20px;
+  box-shadow:
+    8px 8px 16px #00000066,
+    -8px -8px 16px #ffffff4d,
+    inset 4px 4px 10px #00000099, 
+    inset -4px -4px 8px #ffffff4d;
+}
+.page-btn,
+.page-number {
+  padding: 8px 14px;
   border: none;
-  border-radius: 7px;
-  padding: 8px 12px;
-  margin-right: 5px;
+  border-radius: 20px;
   cursor: pointer;
-  font-family: 'Poppins', Arial, sans-serif;
-  transition: background-color 0.3s ease;
+  font-size: 16px;
+  background-color: white;
+  transition: all 0.3s;
+  box-shadow:
+    4px 4px 8px rgba(0, 0, 0, 0.3), 
+    -4px -4px 8px rgba(255, 255, 255, 0.3);
 }
-
-.edit-btn:hover, .details-btn:hover {
-  background-color: #ff4d4d;
+.page-btn:hover,
+.page-number:hover {
+  background-color: #f0f0f0;
+  color: #4c0255;
+  box-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.3), 
+    -2px -2px 4px rgba(255, 255, 255, 0.3); 
+}
+.active {
+  background-color: #1e17f4;
+  color: #f9cfff;
+  font-weight: bold;
+  box-shadow:
+    inset 1px 1px 6px #ffffff4d, 
+    inset -1px -1px 6px #00000099; 
+}
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none; 
+}
+.dots {
+  padding: 8px;
+  font-size: 16px;
+}
+@media (max-width: 768px) {
+  .job-header{
+    flex-direction: column;
+    padding: 10px 0;
+  }  .app-name {
+    font-size: 20px;
+    margin: 0;
+    text-shadow: #520062 1px 1px 10px;
+  }  .auth-buttons button {
+    margin: 2px;
+    padding: 5px 10px;
+    font-size: 10px;
+  }  
+  .filter-container {
+    width: 90vw;
+    padding: 10px;
+    gap: 5px;
+  }  .skills-filter {
+    display: flex;
+    align-items: center;
+  }  
+  .skill-tag {
+    margin: 3px;
+    padding: 5px;
+    font-size: 10px;
+  }  
+  .skill-remove {
+    padding: 3px;
+  }  
+  .clear-btn {
+    margin: 5px 0;
+    padding: 5px 9px;
+    font-size: 12px;
+  }  
+  .job-list {
+    width: 95vw;
+    margin: 10px auto;
+    gap: 5px;
+  }  
+  .job-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+  .job-title{
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cmpy-logo-sm {
+    display: inline;
+    border-radius: 5px;
+    align-self: flex-start;
+    width: 30px;
+    background-color: #fff;
+  }
+  .cmpy-logo-lg{
+    display: none;
+  }
+  .user-rupee-locate-container {
+    gap: 10px;
+    margin: 10px 0;
+  }  
+  .user-rupee-locate-container p{
+    font-size: 15px;
+    margin: 0;
+  }
+  .type-remote {
+    gap: 10px;
+    margin-bottom: 10px ;
+  }  
+  .type-remote p {
+    font-size: 15px;
+    margin: 0;
+  }
+  .detail-btn{
+    text-align: end;
+  }
+  .pagination-container {
+    justify-content: center;
+  }
+  .pagination {
+    padding: 8px 16px;
+    border-radius: 20px;
+  }
+  .page-btn,
+  .page-number {
+    padding: 4px 10px;
+  }
 }

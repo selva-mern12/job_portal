@@ -1,0 +1,224 @@
+.job-apply-bg{
+    overflow: scroll;
+}
+.job-apply-bg::-webkit-scrollbar{
+    display: none;
+}
+.job-applied-container {
+    height: 80vh;
+    margin-top: 10vh;
+    width: 90%;
+    max-width: 1200px;
+    margin: 10vh auto;
+    padding: 20px;
+    text-align: center;
+}
+h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Empty State */
+.empty-state {
+    margin-top: 30px;
+    padding: 30px;
+    background: linear-gradient(to right, #f9f9f9, #ececec);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.empty-state p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.home-btn {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+
+.home-btn:hover {
+    background: linear-gradient(45deg, #0056b3, #004085);
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* Job List */
+.apply-job-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Job Card */
+.apply-job-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Company Logo */
+.company-logo {
+    align-self: flex-start;
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+/* Job Details */
+.applied-job-details {
+    flex: 1;
+    text-align: left;
+}
+
+.applied-job-details h3 {
+    font-size: 20px;
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+.company-name {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+    font-weight: 500;
+}
+
+.applied-date {
+    font-size: 14px;
+    color: #888;
+}
+
+.applied-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.remove-btn, .detail-btn {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+
+.detail-btn {
+    background: linear-gradient(45deg, #ff7eb3, #ffbe76);
+    color: #ffffff;
+    transition: all 0.3s linear;
+    border: #ff4d4d 1px solid;
+    border-radius: 5px;
+}
+
+.detail-btn:hover {
+    background: linear-gradient(45deg, #ffbe76, #ff7eb3);
+    transform: translateY(-2px) scale(1.05);
+}
+
+.remove-btn {
+    background: linear-gradient(45deg, #6a0572, #a200ff);
+    color: white;
+    border: 1px solid #8400ff;
+    border-radius: 5px;
+}
+
+.remove-btn:hover {
+    background: linear-gradient(45deg, #a200ff, #6a0572);
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .job-applied-container {
+        width: 95%;
+        padding: 15px;
+        margin-top: 10vh;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .empty-state {
+        padding: 20px;
+    }
+
+    .empty-state p {
+        font-size: 16px;
+    }
+
+    .apply-job-list {
+        grid-template-columns: 1fr;
+    }
+
+    .apply-job-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .company-logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .applied-buttons-container {
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .job-applied-container {
+        width: 98%;
+        padding: 10px;
+        margin-top: 10vh;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .empty-state {
+        padding: 15px;
+    }
+
+    .empty-state p {
+        font-size: 15px;
+    }
+
+    .applied-job-details h3 {
+        font-size: 18px;
+    }
+
+    .company-name {
+        font-size: 15px;
+    }
+
+    .applied-date {
+        font-size: 13px;
+    }
+
+    .remove-btn, .detail-btn {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+}

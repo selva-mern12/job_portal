@@ -1,0 +1,150 @@
+.loader-container {
+    background: linear-gradient(135deg, #2980b9, #6dd5fa);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .path {
+    width: 300px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    position: relative;
+  }
+  
+  .path::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(to right, #fff, #b3e5fc);
+    border-radius: 5px;
+    animation: fillPath 1s linear infinite forwards;
+  }
+  
+  @keyframes fillPath {
+    to {
+      width: 100%;
+    }
+  }
+  
+  .icons {
+    position: absolute;
+    top: 36%;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .icons span {
+    font-size: 28px;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards, bounce 1.5s infinite ease-in-out alternate;
+  }
+  
+  .icons span:nth-child(1) {
+    animation-delay: 0.5s, 0.5s;
+  }
+  
+  .icons span:nth-child(2) {
+    animation-delay: 1.5s, 1s;
+  }
+  
+  .icons span:nth-child(3) {
+    animation-delay: 2.5s, 1.5s;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes bounce {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-8px);
+    }
+  }
+  
+  .loading-text {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .failure-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(135deg, #ff6b6b, #ffa07a);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    text-align: center;
+  }
+  
+  .failure-icon {
+    font-size: 80px;
+    margin-bottom: 10px;
+    animation: shake 1.5s infinite linear;
+  }
+  
+  @keyframes shake {
+    0%, 100% {
+      transform: rotate(0);
+    }
+    25% {
+      transform: rotate(-10deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    75% {
+      transform: rotate(-5deg);
+    }
+  }
+  
+  h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .retry-button {
+    background-color: white;
+    color: #ff6b6b;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .retry-button:hover {
+    background-color: #ff4757;
+    color: white;
+  }
+  
+  

@@ -1,177 +1,185 @@
-/* General Styles */
 .auth-bg {
-    background: url('https://i.postimg.cc/cLhy56tY/1323c685-80b7-4f56-815f-3e22f33bdbb1.jpg');
-    height: 100vh;
-    width: 100vw;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0;
-    color: #fff;
+  background: url('https://i.postimg.cc/cLhy56tY/1323c685-80b7-4f56-815f-3e22f33bdbb1.jpg');
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  color: #fff;
+}
+
+.auth-container {
+  display: flex;
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: #00ffe580 0px 0px 1000px;
+}
+
+.left-container,
+.right-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #00000030;
+  backdrop-filter: blur(5px);
+  overflow: auto;
+  border-radius: 7px;
+}
+
+.left-container::-webkit-scrollbar,
+.right-container::-webkit-scrollbar {
+  display: none;
+}
+
+.slide-in {
+  animation: slide-in 0.5s ease-in-out forwards;
+}
+
+.slide-out {
+  animation: slide-out 0.5s ease-in-out forwards;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
   }
-  
-  .auth-container {
-    display: flex;
-    height: 80vh;
-    width: 80vw;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: #00ffe580 0px 0px 1000px;
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
-  
-  .left-container,
-  .right-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    background-color: #00000030;
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
   }
-  
-  /* Animations */
-  .slide-in {
-    animation: slide-in 0.5s ease-in-out forwards;
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
-  
-  .slide-out {
-    animation: slide-out 0.5s ease-in-out forwards;
-  }
-  
-  @keyframes slide-in {
-    0% {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slide-out {
-    0% {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  /* Image and Overlay Styles */
-  .register-image,
-  .login-image {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .register-image {
-    background-image: url('https://i.postimg.cc/9MhgZmrg/male-electrician-works-sw-itchboard-with-electrical-connecting-cable_169016-15089.avif');
-    background-position: top center;
-    z-index: 10;
-  }
-  
-  .login-image {
-    background-image: url('https://i.postimg.cc/vmM5vctn/man-having-online-job-interview_52683-43379.avif');
-    z-index: 10;
-  }
-  
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #00000030;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-  }
-  
-  .overlay h1 {
-    font-size: 30px;
-    margin-bottom: 10px;
-  }
-  
-  .overlay p {
-    font-size: 20px;
-  }
-  
-  /* Form Styles */
-  .register-form,
-  .login-form {
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    width: 80%;
-  }
-  
-  .register-form h2,
-  .login-form h2 {
-    margin-bottom: 20px;
-    font-size: 35px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    text-align: left;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 15px;
-    outline: none;
-    background-color: #007bff70;
-    color: #fff;
-  }
-  .form-group input::placeholder{
-    color: #ccc;
-  }
-  
-  .register-form button,
-  .login-form button {
-    width: 50%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 17px;
-    margin-top: 10px;
-  }
-  
-  .register-form button:hover,
-  .login-form button:hover {
-    background-color: #0056b3;
-  }
-  
-  .toggle-link {
-    color: #007bff;
-    cursor: pointer;
-    text-decoration: underline;
-  }
-  
-  .toggle-link:hover {
-    color: #0056b3;
-  }
+}
+
+.register-image,
+.login-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.register-image {
+  background-image: url('https://i.postimg.cc/9MhgZmrg/male-electrician-works-sw-itchboard-with-electrical-connecting-cable_169016-15089.avif');
+  background-position: top center;
+  z-index: 10;
+}
+
+.login-image {
+  background-image: url('https://i.postimg.cc/vmM5vctn/man-having-online-job-interview_52683-43379.avif');
+  z-index: 10;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #00000030;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.overlay h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.overlay p {
+  font-size: 20px;
+  overflow: auto;
+}
+
+.register-form,
+.login-form {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  overflow: auto;
+}
+
+.register-form h2,
+.login-form h2 {
+  margin-bottom: 20px;
+  font-size: 35px;
+  color: #fff;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+  outline: none;
+  background-color: #007bff70;
+  color: #fff;
+}
+
+.form-group input::placeholder {
+  color: #ccc;
+}
+
+.register-form button,
+.login-form button {
+  width: 50%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+.register-form button:hover,
+.login-form button:hover {
+  background-color: #0056b3;
+}
+
+.toggle-link {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.toggle-link:hover {
+  color: #0056b3;
+}
 
 .show-password-container {
   display: flex;
@@ -182,14 +190,15 @@
 .show-password-label {
   margin-left: 8px;
   font-size: 14px;
-  color: #555;
+  color: #ffffff;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .agreement-text {
   font-size: 14px;
-  color: #555;
-  margin-top: 10px;
+  color: #f3d1d1;
+  margin: 0;
   text-align: center;
 }
 
@@ -200,4 +209,86 @@
 
 .agreement-text a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 769px) {
+  .auth-container {
+    width: 90vw;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .left-container,
+  .right-container {
+    flex: none;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border-radius: 0;
+    backdrop-filter: blur(0);
+  }
+
+  .register-image,
+  .login-image {
+    display: none !important;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
+
+  .overlay {
+    position: static;
+    background: none;
+  }
+
+  .register-form,
+  .login-form {
+    width: 100%;
+  }
+
+  .register-form h2,
+  .login-form h2 {
+    font-size: 28px;
+  }
+
+  .form-group input {
+    font-size: 14px;
+  }
+
+  .register-form button,
+  .login-form button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 568px) {
+  .auth-container {
+    width: 95vw;
+  }
+
+  .left-container,
+  .right-container {
+    padding: 15px;
+  }
+
+  .register-form h2,
+  .login-form h2 {
+    font-size: 24px;
+  }
+
+  .form-group input {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .register-form button,
+  .login-form button {
+    font-size: 15px;
+  }
+
+  .agreement-text {
+    font-size: 12px;
+  }
 }

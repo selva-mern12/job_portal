@@ -9,7 +9,8 @@ const AuthPage = () => {
   const [loginData, setLoginData] = useState({ email: '', password: '' });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false); // New state for password visibility
+  const [showPassword, setShowPassword] = useState(false); 
+  const [agree, setAgree] = useState(false)
   const navigate = useNavigate();
 
   const toggleForm = () => {
@@ -29,29 +30,42 @@ const AuthPage = () => {
     e.preventDefault();
     setError(null);
     setLoading(true);
-    const url = `http://localhost:3005/api/users/${isRegister ? 'register' : 'login'}`;
+    const url = `https://job-portal-server-witx.onrender.com/${isRegister ? "register" : "login"}`;
     const formData = isRegister ? registerData : loginData;
-
+  
     try {
       const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+  
       const data = await response.json();
-      data.token && Cookies.set('jwt_token')
+      console.log(data);
+  
       if (!response.ok) {
-        throw new Error(data.error || 'Something went wrong');
+        throw new Error(data.error || "Something went wrong");
       }
-
-      setError(isRegister ? 'Registration successful! Redirecting to login...' : 'Login successful! Redirecting...');
+  
+      // Store user details in cookies
+      if (data.token) {
+        Cookies.set("jwt_token", data.token, { expires: 10 });
+        Cookies.set("user_id", data.user_id, { expires: 10 });
+        Cookies.set("username", data.username, { expires: 10 });
+      }
+  
       setLoading(false);
-
+      setError(isRegister ? "Registration successful! Redirecting to login..." : "Login successful! Redirecting...");
+  
+      setTimeout(() => {
+        setError("");
+      }, 1000);
+  
       setTimeout(() => {
         if (isRegister) {
           setIsRegister(false);
         } else {
-          navigate('/');
+          navigate("/");
         }
       }, 500);
     } catch (error) {
@@ -60,9 +74,12 @@ const AuthPage = () => {
     }
   };
 
-  // Function to toggle password visibility
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const toggleAgree = () => {
+    setAgree(!agree);
   };
 
   return (
@@ -86,7 +103,7 @@ const AuthPage = () => {
                 </div>
                 <div className="form-group">
                   <label>Mobile</label>
-                  <input type="number" name="mobile" value={registerData.mobile} onChange={handleChange} required />
+                  <input type="text" name="mobile" value={registerData.mobile} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
                   <label>Password</label>
@@ -98,7 +115,6 @@ const AuthPage = () => {
                     required
                   />
                 </div>
-                {/* Show Password Checkbox */}
                 <div className="show-password-container">
                   <input
                     type="checkbox"
@@ -110,9 +126,17 @@ const AuthPage = () => {
                     Show Password
                   </label>
                 </div>
-                <p className="agreement-text">
-                  By creating an account, I agree to our <a href="/terms" target="_blank" rel="noopener noreferrer">terms of use</a> and <a href="/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a>.
-                </p>
+                <div className="show-password-container">
+                  <input
+                    type="checkbox"
+                    id="agree"
+                    checked={agree}
+                    onChange={toggleAgree} required
+                  />
+                  <label htmlFor="agree" className="agreement-text">
+                      By creating an account, I agree to our <a href="/terms" target="_blank" rel="noopener noreferrer">terms of use</a> and <a href="/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a>.
+                  </label>
+                </div>
                 <button type="submit">Create Account</button>
               </form>
               <p>
@@ -120,7 +144,7 @@ const AuthPage = () => {
               </p>
             </div>
           ) : (
-            <div className="login-image">
+            <div className="login-image" >
               <div className="overlay">
                 <h1>Welcome Back!</h1>
                 <p>Continue your journey with us.</p>

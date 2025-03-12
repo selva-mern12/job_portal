@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./index.css";
 
 const JobAdding = () => {
-  
+  const navigate = useNavigate();
   const jwtToken = Cookies.get("jwt_token"); 
+  const userId = Cookies.get("user_id"); 
   const [formData, setFormData] = useState({
     companyName: "",
     logoUrl: "",
@@ -19,6 +20,7 @@ const JobAdding = () => {
     skills: "",
     information: "",
   });
+  const [errorMsg, setError] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,13 +30,14 @@ const JobAdding = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3005/api/jobs", {
+      const response = await fetch("https://job-portal-server-witx.onrender.com/job/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${jwtToken}`, 
         },
         body: JSON.stringify({
+          user_id: userId,
           company_name: formData.companyName,
           logo_url: formData.logoUrl,
           job_position: formData.jobPosition,
@@ -52,10 +55,10 @@ const JobAdding = () => {
       if (!response.ok) {
         throw new Error("Failed to post job");
       }
-
+      
+      navigate('/');
       const data = await response.json();
-      console.log("Job Posted:", data);
-
+      setError(data.message)
       setFormData({
         companyName: "",
         logoUrl: "",
@@ -70,7 +73,7 @@ const JobAdding = () => {
         information: "",
       });
     } catch (error) {
-      console.error("Error posting job:", error);
+      setError(error.message)
     }
   };
 
@@ -78,32 +81,31 @@ const JobAdding = () => {
     return <Navigate to="/authentication" />;
   }
   
-
   return (
     <div className="job-adding-container">
-      <div className="job-image-section" />
+     <div className="job-image-section" />
       <div className="job-form-section">
         <h2 className="form-title">Add Job Description</h2>
         <form onSubmit={handleSubmit} className="job-form">
           <div className="input-container">
             <label htmlFor="companyName" className="form-label">Company Name</label>
-            <input id="companyName" className="form-input" type="text" name="companyName" placeholder="Enter your company name" value={formData.companyName} onChange={handleChange} />
+            <input id="companyName" className="form-input" type="text" name="companyName" placeholder="Enter your company name" value={formData.companyName} onChange={handleChange} required />
           </div>
           <div className="input-container">
             <label htmlFor="logoUrl" className="form-label">Add Logo URL</label>
-            <input id="logoUrl" className="form-input" type="text" name="logoUrl" placeholder="Enter the link" value={formData.logoUrl} onChange={handleChange} />
+            <input id="logoUrl" className="form-input" type="text" name="logoUrl" placeholder="Enter the link" value={formData.logoUrl} onChange={handleChange} required/>
           </div>
           <div className="input-container">
             <label htmlFor="jobPosition" className="form-label">Job Position</label>
-            <input id="jobPosition" className="form-input" type="text" name="jobPosition" placeholder="Enter job position" value={formData.jobPosition} onChange={handleChange} />
+            <input id="jobPosition" className="form-input" type="text" name="jobPosition" placeholder="Enter job position" value={formData.jobPosition} onChange={handleChange} required/>
           </div>
           <div className="input-container">
             <label htmlFor="salary" className="form-label">Monthly Salary</label>
-            <input id="salary" className="form-input" type="text" name="salary" placeholder="Enter amount in rupees" value={formData.salary} onChange={handleChange} />
+            <input id="salary" className="form-input" type="text" name="salary" placeholder="Enter amount in rupees" value={formData.salary} onChange={handleChange} required/>
           </div>
           <div className="input-container">
             <label htmlFor="jobType" className="form-label">Job Type</label>
-            <select id="jobType" className="form-select" name="jobType" value={formData.jobType} onChange={handleChange}>
+            <select id="jobType" className="form-select" name="jobType" value={formData.jobType} onChange={handleChange} required>
               <option value="">Select</option>
               <option value="Full Time">Full-Time</option>
               <option value="Part Time">Part-Time</option>
@@ -113,36 +115,38 @@ const JobAdding = () => {
           </div>
           <div className="input-container">
             <label htmlFor="remote" className="form-label">Remote/Office</label>
-            <select id="remote" className="form-select" name="remote" value={formData.remote} onChange={handleChange}>
+            <select id="remote" className="form-select" name="remote" value={formData.remote} onChange={handleChange} required>
               <option value="">Select</option>
               <option value="Remote">Remote</option>
               <option value="Office">Office</option>
+              <option value="Hybrid">Hybrid</option>
             </select>
           </div>
           <div className="input-container">
             <label htmlFor="location" className="form-label">Location</label>
-            <input id="location" className="form-input" type="text" name="location" placeholder="Enter location" value={formData.location} onChange={handleChange} />
+            <input id="location" className="form-input" type="text" name="location" placeholder="Enter location" value={formData.location} onChange={handleChange} required/>
           </div>
           <div className="input-container">
             <label htmlFor="jobDescription" className="form-label">Job Description</label>
-            <textarea id="jobDescription" className="form-textarea" name="jobDescription" placeholder="Type the job description" value={formData.jobDescription} onChange={handleChange} />
+            <textarea id="jobDescription" className="form-textarea" name="jobDescription" placeholder="Type the job description" value={formData.jobDescription} onChange={handleChange} required />
           </div>
           <div className="input-container">
             <label htmlFor="aboutCompany" className="form-label">About Company</label>
-            <textarea id="aboutCompany" className="form-textarea" name="aboutCompany" placeholder="Type about your company" value={formData.aboutCompany} onChange={handleChange} />
+            <textarea id="aboutCompany" className="form-textarea" name="aboutCompany" placeholder="Type about your company" value={formData.aboutCompany} onChange={handleChange} required/>
           </div>
           <div className="input-container">
             <label htmlFor="skills" className="form-label">Skills Required</label>
-            <input id="skills" className="form-input" type="text" name="skills" placeholder="Enter must-have skills (comma separated)" value={formData.skills} onChange={handleChange} />
+            <input id="skills" className="form-input" type="text" name="skills" placeholder="Enter must-have skills (comma separated)" value={formData.skills} onChange={handleChange} required/>
           </div>
           <div className="input-container">
             <label htmlFor="information" className="form-label">Additional Information</label>
-            <textarea id="information" className="form-textarea" name="information" placeholder="Enter additional information" value={formData.information} onChange={handleChange} />
+            <textarea id="information" className="form-textarea" name="information" placeholder="Enter additional information..." value={formData.information} onChange={handleChange} />
           </div>
           <div className="form-buttons">
-            <button type="button" className="cancel-btn">Cancel</button>
+            <button type="button" className="cancel-btn" onClick={() => navigate('/')}>Cancel</button>
             <button type="submit" className="add-job-btn">+ Add Job</button>
           </div>
+          <p>{errorMsg}</p>
         </form>
       </div>
     </div>
